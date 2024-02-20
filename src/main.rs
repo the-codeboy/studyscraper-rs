@@ -6,7 +6,7 @@ use rocket::fs::FileServer;
 use rocket::response::Redirect;
 
 #[get("/download/<url>")]
-fn hello(url: &str) -> Redirect {
+fn download(url: &str) -> Redirect {
     if !url.starts_with("https://www.studydrive.net/") {
         return Redirect::to("/not_found");
     }
@@ -26,7 +26,9 @@ fn hello(url: &str) -> Redirect {
 #[launch]
 fn rocket() -> _ {
     rocket::build()
-        .configure(rocket::Config::figment().merge(("port", 8080)))
-        .mount("/", routes![hello])
+        .configure(rocket::Config::figment()
+        .merge(("address", "0.0.0.0"))
+        .merge(("port", 8080)))
+        .mount("/", routes![download])
         .mount("/", FileServer::from("static"))
 }
