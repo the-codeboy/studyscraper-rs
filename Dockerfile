@@ -8,7 +8,10 @@ WORKDIR /usr/src/studyscraper
 COPY Cargo.toml Cargo.lock ./
 RUN cargo build --release
 
-COPY . .
+COPY src/ src/
 RUN cargo install --path .
+
+COPY static/ static/
+
 CMD ["studyscraper"]
 
