@@ -35,16 +35,13 @@
 
         /* Dark mode styles */
         body.dark-mode {
-          background-color: #333; /* Set dark background color */
+          background-color: #1a1a1a; /* Set dark background color */
           color: #f5f5f5; /* Set dark text color */
         }
 
-        body.dark-mode .container {
-          background-color: #444; /* Set dark container background color */
-        }
 
         body.dark-mode .btn-download {
-          background-color: #555; /* Set dark button background color */
+          background-color: #333; /* Set dark button background color */
           color: #f5f5f5; /* Set dark button text color */
         }
 
@@ -54,6 +51,16 @@
       </style>
     </head>
     <body>
+      <div class="form-check form-switch">
+        <input class="form-check-input"  type="checkbox" id="darkModeSwitch" onclick="toggleDarkMode()" />
+        <label class="form-check-label" for="darkModeSwitch">Dark Mode</label>
+      </div>
+  <script>
+    document.getElementById("darkModeSwitch").checked = false;
+    function toggleDarkMode() {
+      document.body.classList.toggle('dark-mode');
+    }
+  </script>
       <div class="container">
         <h1 class="text-center mt-5 mb-4">Studyscraper: A Studydrive Downloader</h1>
         <p class="text-center">
