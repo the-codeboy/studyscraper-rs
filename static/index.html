@@ -56,7 +56,14 @@
         <label class="form-check-label" for="darkModeSwitch">Dark Mode</label>
       </div>
   <script>
+
+if(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches){
+      document.body.classList.add('dark-mode');
+    document.getElementById("darkModeSwitch").checked = true;
+}
+else{
     document.getElementById("darkModeSwitch").checked = false;
+}
     function toggleDarkMode() {
       document.body.classList.toggle('dark-mode');
     }
