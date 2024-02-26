@@ -57,16 +57,21 @@
       </div>
   <script>
 
-if(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches){
-      document.body.classList.add('dark-mode');
-    document.getElementById("darkModeSwitch").checked = true;
+if (localStorage.getItem('darkMode') === 'true') {
+  document.body.classList.add('dark-mode');
+  document.getElementById('darkModeSwitch').checked = true;
+} else {
+  document.getElementById('darkModeSwitch').checked = false;
 }
-else{
-    document.getElementById("darkModeSwitch").checked = false;
+
+function toggleDarkMode() {
+  document.body.classList.toggle('dark-mode');
+  if (document.body.classList.contains('dark-mode')) {
+    localStorage.setItem('darkMode', 'true');
+  } else {
+    localStorage.setItem('darkMode', 'false');
+  }
 }
-    function toggleDarkMode() {
-      document.body.classList.toggle('dark-mode');
-    }
   </script>
       <div class="container">
         <h1 class="text-center mt-5 mb-4">Studyscraper: A Studydrive Downloader</h1>
