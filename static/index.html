@@ -84,6 +84,7 @@ function toggleDarkMode() {
             class="form-control rounded my-3"
             placeholder="Paste URL here e.g. https://www.studydrive.net/en/doc/effi-alle-folien/1440343"
             value=""
+            id="url-input"
           />
           <button
             class="btn btn-primary btn-download rounded"
@@ -147,7 +148,7 @@ function toggleDarkMode() {
       function download() {
         window.open(
           "/download/" +
-            encodeURIComponent(document.querySelector("input").value),
+            encodeURIComponent(document.getElementById("url-input").value),
           "_blank",
         );
       }
