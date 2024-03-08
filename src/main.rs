@@ -11,10 +11,10 @@ async fn download(url: &str) -> Redirect {
         return Redirect::to("/not_found");
     }
     let doc_id = url
-        .split("/")
+        .split('/')
         .last()
         .unwrap()
-        .split("?")
+        .split('?')
         .collect::<Vec<_>>()[0];
 
     println!("doc_id={}", doc_id);
@@ -27,13 +27,13 @@ async fn download(url: &str) -> Redirect {
         let token = get_token().await.unwrap();
         let data = json["data"].as_object().unwrap();
         let name = data["filename"].as_str().unwrap();
-        let ending=name.split(".")
+        let ending=name.split('.')
             .last()
             .unwrap();
         return Redirect::to(format!("https://cdn.studydrive.net/d/prod/documents/{}/original/{}.{}?token={}", doc_id, doc_id,ending, token));
     }
     let name = data["filename"].as_str().unwrap();
-    let ending=name.split(".")
+    let ending=name.split('.')
         .last()
         .unwrap();
     let preview = data["file_preview"].as_str().unwrap();
