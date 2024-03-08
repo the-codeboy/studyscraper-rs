@@ -8,3 +8,5 @@ publish = false
 rocket = { version = "=0.5.0-rc.3"}
 ureq = "2.7.1"
 regex = "1.9.5"
+serde_json = "1.0.114"
+reqwest = {version = "0.11.24", features = ["json"]}
