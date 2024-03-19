@@ -44,34 +44,16 @@ async fn download(url: &str) -> MyResponse {
 
     let json = send_get_request(doc_id).await.unwrap();
     let data = json["data"].as_object().unwrap();
-    if data["file_preview"].is_null() {
-        println!("no token found");
-        let json = send_get_request(doc_id).await.unwrap();
-        let token = get_token().await.unwrap();
-        let data = json["data"].as_object().unwrap();
-        let name = data["filename"].as_str().unwrap();
-        let ending = name.split('.').last().unwrap();
-        let url = format!(
-            "https://cdn.studydrive.net/d/prod/documents/{}/original/{}.{}?token={}",
-            doc_id, doc_id, ending, token
-        );
-        return MyResponse::Template(Box::new(Template::render(
-            "download",
-            context! { url: url, name: name},
-        )));
-    }
+    let token = get_token().await.unwrap();
     let name = data["filename"].as_str().unwrap();
     let ending = name.split('.').last().unwrap();
-    let preview = data["file_preview"].as_str().unwrap();
-    let token = preview.split("token=").last().unwrap();
-
     let url = format!(
         "https://cdn.studydrive.net/d/prod/documents/{}/original/{}.{}?token={}",
         doc_id, doc_id, ending, token
     );
     MyResponse::Template(Box::new(Template::render(
         "download",
-        context! { url: url, name: name },
+        context! { url: url, name: name},
     )))
 }
 
