@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>So long and thanks for all the fish</title>
+  <meta name="description"
+    content="Studyscraper was a free online tool that allowed you to download Studydrive documents, Anki cards, and all other file types without a premium subscription." />
+  <link rel="icon" href="https://the-codeboy.com/img/peeper-32.png" type="image/png" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
+  <style>
+    body {
+      padding: 20px;
+      background-color: #f5f5f5;
+      /* Set default background color */
+      color: #333;
+      /* Set default text color */
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .logo {
+      max-width: 50px;
+      cursor: pointer;
+      border-radius: 50%;
+    }
+
+    /* Dark mode styles */
+    body.dark-mode {
+      background-color: #1a1a1a;
+      /* Set dark background color */
+      color: #f5f5f5;
+      /* Set dark text color */
+    }
+
+    body.dark-mode .logo {
+      border: 2px solid #f5f5f5;
+      /* Set dark logo border color */
+    }
+  </style>
+</head>
+
+<body>
+  <div class="form-check form-switch">
+    <input class="form-check-input" type="checkbox" id="darkModeSwitch" onclick="toggleDarkMode()" />
+    <label class="form-check-label" for="darkModeSwitch">Dark Mode</label>
+  </div>
+  <script>
+
+    if (localStorage.getItem('darkMode') === 'true') {
+      document.body.classList.add('dark-mode');
+      document.getElementById('darkModeSwitch').checked = true;
+    } else {
+      document.getElementById('darkModeSwitch').checked = false;
+    }
+
+    function toggleDarkMode() {
+      document.body.classList.toggle('dark-mode');
+      if (document.body.classList.contains('dark-mode')) {
+        localStorage.setItem('darkMode', 'true');
+      } else {
+        localStorage.setItem('darkMode', 'false');
+      }
+    }
+  </script>
+  <div class="container">
+    <h1 class="text-center mt-5 mb-4">So long and thanks for all the fish</h1>
+    <p class="text-center">
+      They say all good things must come to an end. Unfortunately, this is the end of Studyscraper. I received an email
+      from Studydrive, and I have to shut down the service. I hope
+      you enjoyed using Studyscraper as much as I enjoyed building it. Thank you for your support and good luck with the
+      rest of your studies!
+    </p>
+  </div>
+
+  <div class="container">
+    <h2 class="text-center mt-5 mb-4">What now?</h2>
+    <p class="text-center">
+      A friend of mine is
+      currently building a completely free platform for students to share and download documents. It will be available
+      on <a href="https://ghostudy.de">ghostudy.de</a> soon.
+    </p>
+  </div>
+
+  <div class="text-center">
+    <img class="img-fluid"
+      src="https://media1.tenor.com/m/2qno9yKA8EUAAAAd/hitchhikers-guide-to-the-galaxy-dont-panic.gif"
+      alt="So long and thanks for all the fish" />
+  </div>
+
+  <div style="height: 50px;"></div>
+
+  <div class="container">
+    <p class="text-center">
+      <img class="logo" src="https://the-codeboy.com/img/peeper-32_scaled.png" alt="codeboy logo" /></a>
+      Made by
+      <a href="https://the-codeboy.com">codeboy</a>
+      <a href="https://github.com/the-codeboy/studyscraper-rs"></a>
+      <a href="https://github.com/the-codeboy/studyscraper-rs">
+
+        <img class="logo" src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png"
+          alt="GitHub Logo" /></a>
+      Source on
+      <a href="https://github.com/the-codeboy/studyscraper-rs">GitHub</a>
+    </p>
+  </div>
+</body>
+
+</html>
